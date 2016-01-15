@@ -17,12 +17,6 @@ This plugin can be isntalled in both:
 bin/kibana plugin --install sirensolutions/kibi-radar-chart-plugin/0.1.0
 ```
 
-or
-
-```
-bin/kibana plugin --install https://github.com/sirensolutions/kibi-radar-chart-plugin/archive/0.1.0.tar.gz
-```
-
 ### Manual
 
 ```
