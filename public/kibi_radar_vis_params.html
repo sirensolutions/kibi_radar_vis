@@ -1,0 +1,58 @@
+<!-- vis type specific options -->
+<div class="form-group">
+  <label>Zoom - {{ vis.params.addLevelScale}}</label>
+  <input type="range" step="0.2" value="{{addLevelScale}}" ng-model="vis.params.addLevelScale" name="addLevelScale" class="form-control" min="0" max="5" />
+</div>
+<div class="form-group">
+  <label>Label Scale - {{ vis.params.addLabelScale}}</label>
+  <input type="range" class="form-control" step="0.1" value="{{addLabelScale}}" ng-model="vis.params.addLabelScale" name="addLabelScale" min="0.9" max="3" />
+</div>
+
+<div>
+  	<label>Levels:</label>
+  	<input type="number" class="form-control" step="1" value="{{vis.params.addLevelNumber}}" ng-model="vis.params.addLevelNumber" name="addLevelNumber" min="1" max="10"/>
+</div>
+<div>
+  <label>
+    <input type="checkbox" value="{{isFacet}}" ng-model="vis.params.isFacet" name="isFacet" ng-checked="vis.params.isFacet">
+   Facet Plot
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addLevel}}" ng-model="vis.params.addLevel" name="addLevel" ng-checked="vis.params.addLevel">
+   Show Levels
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addAxe}}" ng-model="vis.params.addAxe" name="addAxe" ng-checked="vis.params.addAxe">
+   Show Axes
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addVertice}}" ng-model="vis.params.addVertice" name="addVertice" ng-checked="vis.params.addVertice">
+   Show Vertices
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addPolygon}}" ng-model="vis.params.addPolygon" name="addPolygon" ng-checked="vis.params.addPolygon">
+   Show Polygons
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addLevelLabel}}" ng-model="vis.params.addLevelLabel" name="addLevelLabel" ng-checked="vis.params.addLevelLabel">
+   Show Level Labels
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addLAxeLabel}}" ng-model="vis.params.addAxeLabel" name="addAxeLabel" ng-checked="vis.params.addAxeLabel">
+   Show Axe Labels
+  </label>
+</div>
+<vislib-basic-options></vislib-basic-options>
+
