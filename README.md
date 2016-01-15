@@ -8,15 +8,22 @@ A radar chart is a graphical method of displaying multivariate data             
 
 This plugin can be isntalled in both:
  
- * [Kibana >= 4.3](https://www.elastic.co/downloads/past-releases/kibana-4-3-0)
- * [Kibi >= 0.3](https://siren.solutions/kibi) (Coming soon ...)
+ * [Kibana: 4.3](https://www.elastic.co/downloads/past-releases/kibana-4-3-0)
+ * [Kibi: 0.3](https://siren.solutions/kibi) (Coming soon ...)
 
-#### Automatic
+### Automatic
+
 ```
-bin/kibana plugin --install sirensolutions/kibi-radar-chart-plugin
+bin/kibana plugin --install sirensolutions/kibi-radar-chart-plugin/0.1.0
 ```
 
-#### Manuall 
+or
+
+```
+bin/kibana plugin --install https://github.com/sirensolutions/kibi-radar-chart-plugin/archive/0.1.0.tar.gz
+```
+
+### Manual
 
 ```
 git clone https://github.com/sirensolutions/kibi-radar-chart-plugin
@@ -25,6 +32,13 @@ npm install
 npm run build
 cp -R build/kibi_radar_vis KIBANA_FOLDER_PATH/installedPlugins/
 ```
+
+## Uninstall
+
+```
+bin/kibana plugin  --remove kibi-radar-chart-plugin
+```
+
 ## Development
 
 - Clone the repository at the same level of a Kibana > 4.2 clone
