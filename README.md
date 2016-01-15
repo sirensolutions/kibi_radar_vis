@@ -2,7 +2,8 @@
 
 A radar chart is a graphical method of displaying multivariate data                   in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point. The relative position and angle of the axes is typically uninformative.
 
-![image](./radar.png)
+![image](./img/radar.png =400x)
+![image](./img/kibana.png =400x)
 
 ## Installation
 
