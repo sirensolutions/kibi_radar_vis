@@ -17,7 +17,10 @@ This plugin can be installed in both:
 ### Automatic
 
 ```
-bin/kibana plugin --install sirensolutions/kibi_radar_vis/0.1.0
+# for kibi
+./bin/kibi plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
+# for kibana
+./bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
 ```
 
 ### Manual
@@ -33,6 +36,9 @@ cp -R build/kibi_radar_vis KIBANA_FOLDER_PATH/installedPlugins/
 ## Uninstall
 
 ```
+# for kibi
+bin/kibi plugin  --remove kibi_radar_vis
+# for kibana
 bin/kibana plugin  --remove kibi_radar_vis
 ```
 
