@@ -50,3 +50,83 @@ bin/kibana plugin  --remove kibi_radar_vis
 - Install dependencies with `npm install`
 - Install the plugin to Kibana and start watching for changes by running 
   `npm start`
+
+## Demo
+
+![heroes](img/heroes-vis.png)
+
+Create a sample index with the commands below and then create a new radar visualization.
+
+```sh
+$ curl -XPUT 'http://localhost:9200/hero' -d '
+{
+  "mappings": {
+    "Hero": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "index": "not_analyzed"
+        }
+      }
+    }
+  }
+}
+'
+
+$ curl 'http://localhost:9200/hero/Hero' -d '
+{
+  "name": "Thor",
+  "intelligence": 2,
+  "strength": 7,
+  "speed": 7,
+  "durability": 6,
+  "energy": 6,
+  "fighting": 4,
+  "description": "god-like durability"
+}
+'
+
+$ curl 'http://localhost:9200/hero/Hero' -d '
+{
+  "name": "Iron Man",
+  "intelligence": 6,
+  "strength": 6,
+  "speed": 5,
+  "durability": 6,
+  "energy": 6,
+  "fighting": 4,
+  "description": "smart entreprenuer"
+}
+'
+
+$ curl 'http://localhost:9200/hero/Hero' -d '
+{
+  "name": "Captain America",
+  "intelligence": 3,
+  "strength": 3,
+  "speed": 2,
+  "durability": 3,
+  "energy": 1,
+  "fighting": 6,
+  "description": "only human"
+}
+'
+
+$ curl 'http://localhost:9200/hero/Hero' -d '
+{
+  "name": "Hulk",
+  "intelligence": 6,
+  "strength": 7,
+  "speed": 3,
+  "durability": 7,
+  "energy": 1,
+  "fighting": 4,
+  "description": "brilliant scientist"
+}
+'
+```
+
+The metrics define the dimensions of the chart, and should be at least three.
+Each colored area is defined in the bucket section, e.g., a hero's name.
+
+![heroes params](img/heroes-params.png)
