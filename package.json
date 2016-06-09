@@ -1,6 +1,6 @@
 {
   "name": "kibi_radar_vis",
-  "version": "0.1.0",
+  "version": "4.4.2",
   "authors": [
     "SIREn Solutions <info@siren.solutions>"
   ],
@@ -24,7 +24,7 @@
     "bluebird": "^3.0.6",
     "bower": "^1.6.9",
     "eslint": "^1.10.3",
-    "gulp": "^3.9.0",
+    "gulp": "3.9.1",
     "gulp-eslint": "^1.1.1",
     "gulp-gzip": "^1.2.0",
     "gulp-tar": "^1.6.0",
