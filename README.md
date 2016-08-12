@@ -16,30 +16,30 @@ This plugin can be installed in both:
 
 ### Automatic
 
-```
-# for kibi
-./bin/kibi plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
-# for kibana
-./bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
+```sh
+$ # for kibi
+$ ./bin/kibi plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/4.5.3.zip
+$ # for kibana
+$ ./bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/4.5.3.zip
 ```
 
 ### Manual
 
-```
-git clone https://github.com/sirensolutions/kibi_radar_vis.git
-cd kibi_radar_vis
-npm install
-npm run build
-cp -R build/kibi_radar_vis KIBANA_FOLDER_PATH/installedPlugins/
+```sh
+$ git clone https://github.com/sirensolutions/kibi_radar_vis.git
+$ cd kibi_radar_vis
+$ npm install
+$ npm run build
+$ cp -R build/kibi_radar_vis KIBANA_FOLDER_PATH/installedPlugins/
 ```
 
 ## Uninstall
 
-```
-# for kibi
-bin/kibi plugin  --remove kibi_radar_vis
-# for kibana
-bin/kibana plugin  --remove kibi_radar_vis
+```sh
+$ # for kibi
+$ bin/kibi plugin  --remove kibi_radar_vis
+$ # for kibana
+$ bin/kibana plugin  --remove kibi_radar_vis
 ```
 
 ## Development
