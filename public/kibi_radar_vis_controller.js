@@ -10,7 +10,6 @@ define(function (require) {
     let data;
     let config;
     let chartVis;
-    let margin;
     let width;
     let height;
     // declare data
@@ -23,7 +22,6 @@ define(function (require) {
 
     // set default config
     const _initConfig = function () {
-      margin = 20;
       const chartW = width / 3;
       const chartH = width / 3;
       config = {
@@ -135,7 +133,7 @@ define(function (require) {
       const div = d3.select(svgRoot)
         .append('svg')
         .attr('width', width)
-        .attr('height', height + margin);
+        .attr('height', height);
 
       //create main chartVis svg
       if (config.facet) {
