@@ -1,33 +1,31 @@
 define(function (require) {
   // get the kibana/metric_vis module, and make sure that it requires the 'kibana' module if it
   // didn't already
-  var module = require('ui/modules').get('kibana/kibi_radar_vis', ['kibana']);
-  var d3 = require('d3');
+  const module = require('ui/modules').get('kibana/kibi_radar_vis', ['kibana']);
+  const d3 = require('d3');
 
   module.controller('KbnRadarVisController', function ($scope, $element, $rootScope, Private) {
-    var tabifyAggResponse = Private(require('ui/agg_response/tabify/tabify'));
+    const tabifyAggResponse = Private(require('ui/agg_response/tabify/tabify'));
 
-    var data;
-    var config;
-    var chartVis;
-    var margin;
-    var width;
-    var height;
+    let data;
+    let config;
+    let chartVis;
+    let margin;
+    let width;
+    let height;
+    // declare data
+    let tableGroups = null;
 
     //mouse events
-    var over = 'ontouchstart' in window ? 'touchstart' : 'mouseover';
-    var out = 'ontouchstart' in window ? 'touchend' : 'mouseout';
-
-    // declare data
-    var tableGroups = null;
-
-    var svgRoot = $element[0];
+    const over = 'ontouchstart' in window ? 'touchstart' : 'mouseover';
+    const out = 'ontouchstart' in window ? 'touchend' : 'mouseout';
+    const svgRoot = $element[0];
 
     // set default config
-    var _initConfig = function () {
+    const _initConfig = function () {
       margin = 20;
-      var chartW = width / 3;
-      var chartH = width / 3;
+      const chartW = width / 3;
+      const chartH = width / 3;
       config = {
         w: chartW,
         h: chartH,
@@ -72,7 +70,7 @@ define(function (require) {
 
 
     // adjust config parameters
-    var _updateConfig = function () {
+    const _updateConfig = function () {
       config.maxValue = Math.max(config.maxValue, d3.max(data, function (d) {
         return d3.max(d.axes, function (o) { return o.value; });
       }));
@@ -98,10 +96,10 @@ define(function (require) {
     };
 
 
-    var _updateDimensions = function () {
-      var delta = 18;
-      var w = $element.parent().width();
-      var h = $element.parent().height();
+    const _updateDimensions = function () {
+      const delta = 18;
+      let w = $element.parent().width();
+      let h = $element.parent().height();
       if (w) {
         if (w > delta) {
           w -= delta;
@@ -116,11 +114,11 @@ define(function (require) {
       }
     };
 
-    var _buildCoordinates = function (data) {
+    const _buildCoordinates = function (data) {
       data.forEach(function (group) {
         group.axes.forEach(function (d, i) {
-          var sin = Math.sin(i * config.radians / chartVis.totalAxes);
-          var cos = Math.cos(i * config.radians / chartVis.totalAxes);
+          const sin = Math.sin(i * config.radians / chartVis.totalAxes);
+          const cos = Math.cos(i * config.radians / chartVis.totalAxes);
           d.coordinates = { // [x, y] coordinates
             x: config.w / 2 * (1 - (parseFloat(Math.max(d.value, 0)) / config.maxValue) * sin),
             y: config.h / 2 * (1 - (parseFloat(Math.max(d.value, 0)) / config.maxValue) * cos)
@@ -129,12 +127,12 @@ define(function (require) {
       });
     };
 
-    var _buildVisComponents = function () {
+    const _buildVisComponents = function () {
       // update vis parameters
       chartVis.allAxis = data[0].axes.map(function (i, j) { return i.axis; });
       chartVis.totalAxes = chartVis.allAxis.length;
       chartVis.radius = Math.min(config.w / 2, config.h / 2);
-      var div = d3.select(svgRoot)
+      const div = d3.select(svgRoot)
         .append('svg')
         .attr('width', width)
         .attr('height', height + margin);
@@ -191,7 +189,7 @@ define(function (require) {
         .attr('transform', 'translate(' + 0 + ', ' + 1.1 * config.h + ')');
     };
 
-    var _buildSingleLevelLine = function (levelFactor) {
+    const _buildSingleLevelLine = function (levelFactor) {
       chartVis.levels
         .data(chartVis.allAxis).enter()
         .append('svg:line').classed('level-lines', true)
@@ -205,15 +203,15 @@ define(function (require) {
     };
 
     // builds out the levels of the radar chart
-    var _buildLevels = function () {
-      for (var level = 0; level < config.levels; level++) {
-        var levelFactor = chartVis.radius * ((level + 1) / config.levels);
+    const _buildLevels = function () {
+      for (let level = 0; level < config.levels; level++) {
+        const levelFactor = chartVis.radius * ((level + 1) / config.levels);
         // build level-lines
         _buildSingleLevelLine(levelFactor);
       }
     };
 
-    var _buildSingleLevelLabel = function (level, levelFactor) {
+    const _buildSingleLevelLabel = function (level, levelFactor) {
       chartVis.levels
         .data([1]).enter()
         .append('svg:text').classed('level-labels', true)
@@ -227,9 +225,9 @@ define(function (require) {
     };
 
     // builds out the levels labels
-    var _buildLevelsLabels = function () {
-      for (var level = 0; level < config.levels; level++) {
-        var levelFactor = chartVis.radius * ((level + 1) / config.levels);
+    const _buildLevelsLabels = function () {
+      for (let level = 0; level < config.levels; level++) {
+        const levelFactor = chartVis.radius * ((level + 1) / config.levels);
         // build level-labels
         _buildSingleLevelLabel(level, levelFactor);
       }
@@ -237,7 +235,7 @@ define(function (require) {
 
 
     // builds out the axes
-    var _buildAxes = function () {
+    const _buildAxes = function () {
       chartVis.axes
         .data(chartVis.allAxis).enter()
         .append('svg:line').classed('axis-lines', true)
@@ -249,7 +247,7 @@ define(function (require) {
         .attr('stroke-width', '1px');
     };
     // builds out the axes labels
-    var _buildAxesLabels = function () {
+    const _buildAxesLabels = function () {
       chartVis.axes
         .data(chartVis.allAxis).enter()
         .append('svg:text').classed('axis-labels', true)
@@ -262,7 +260,7 @@ define(function (require) {
     };
 
     // builds out the legend
-    var _buildLegend = function (data) {
+    const _buildLegend = function (data) {
       //Create legend squares
       if (config.facet) {
         chartVis.legend.selectAll('.legend-tiles')
@@ -328,7 +326,7 @@ define(function (require) {
     };
 
     // show tooltip of vertices
-    var _verticesTooltipShow = function (d) {
+    const _verticesTooltipShow = function (d) {
       chartVis.verticesTooltip.style('opacity', 0.9)
         .html('<strong>Value</strong>: ' + d.value + '<br />')
         .style('left', (d3.event.pageX) + 'px')
@@ -336,12 +334,12 @@ define(function (require) {
     };
 
     // hide tooltip of vertices
-    var _verticesTooltipHide = function () {
+    const _verticesTooltipHide = function () {
       chartVis.verticesTooltip.style('opacity', 0);
     };
 
     // builds out the polygon vertices of the dataset
-    var _buildVertices = function (data) {
+    const _buildVertices = function (data) {
       data.forEach(function (group, g) {
         chartVis.vertices
           .data(group.axes).enter()
@@ -356,12 +354,12 @@ define(function (require) {
     };
 
     // builds out the polygon areas of the dataset
-    var _buildPolygons = function (data) {
+    const _buildPolygons = function (data) {
       chartVis.vertices
         .data(data).enter()
         .append('svg:polygon').classed('polygon-areas', true)
         .attr('points', function (group) { // build verticesString for each group
-          var verticesString = '';
+          let verticesString = '';
           group.axes.forEach(function (d) { verticesString += d.coordinates.x + ',' + d.coordinates.y + ' '; });
           return verticesString;
         })
@@ -390,16 +388,16 @@ define(function (require) {
     };
 
 
-    var _buildVis = function (data) {
+    const _buildVis = function (data) {
       _buildVisComponents();
       _buildCoordinates(data);
-      var showLevels = $scope.vis.params.addLevel;
-      var showLevelsLabels = $scope.vis.params.addLevelLabel;
-      var showAxes = $scope.vis.params.addAxe;
-      var showAxesLabels = $scope.vis.params.addAxeLabel;
-      var showLegend = $scope.vis.params.addLegend;
-      var showVertices = $scope.vis.params.addVertice;
-      var showPolygons = $scope.vis.params.addPolygon;
+      const showLevels = $scope.vis.params.addLevel;
+      const showLevelsLabels = $scope.vis.params.addLevelLabel;
+      const showAxes = $scope.vis.params.addAxe;
+      const showAxesLabels = $scope.vis.params.addAxeLabel;
+      const showLegend = $scope.vis.params.addLegend;
+      const showVertices = $scope.vis.params.addVertice;
+      const showPolygons = $scope.vis.params.addPolygon;
 
       if (showLevels) _buildLevels();
       if (showLevelsLabels) _buildLevelsLabels();
@@ -411,7 +409,7 @@ define(function (require) {
     };
 
 
-    var _render = function () {
+    const _render = function () {
       d3.select(svgRoot).selectAll('svg').remove();
       if (config.facet) {
         data.forEach(function (d, i) {
@@ -432,7 +430,7 @@ define(function (require) {
     };
 
 
-    var off = $rootScope.$on('change:vis', function () {
+    const off = $rootScope.$on('change:vis', function () {
       _updateDimensions();
       _initConfig();
       $scope.processTableGroups(tableGroups);
@@ -445,15 +443,16 @@ define(function (require) {
     $scope.processTableGroups = function (tableGroups) {
       tableGroups.tables.forEach(function (table) {
         data = [];
-        var cols = table.columns;
+        const cols = table.columns;
         table.rows.forEach(function (row,i) {
-          var group = {};
+          const group = {};
           group.group = row[0];
-          var axes = [];
-          for (var i = 1; i < row.length; i++) {
-            var item = {};
-            item.axis = cols[i].aggConfig.params.field.displayName;
-            item.value = row[i];
+          const axes = [];
+          for (let i = 1; i < row.length; i++) {
+            const item = {
+              axis: cols[i].title,
+              value: row[i]
+            };
             axes.push(item);
           }
           group.axes = axes;
@@ -464,8 +463,6 @@ define(function (require) {
 
     $scope.$watch('esResponse', function (resp) {
       if (resp) {
-        // $scope.processTableGroups(tabifyAggResponse($scope.vis, resp));
-        // var tableGroups = tabifyAggResponse($scope.vis, resp);
         tableGroups = tabifyAggResponse($scope.vis, resp);
         if (tableGroups.tables.length > 0) {
           if (tableGroups.tables[0].columns.length > 2) {
