@@ -1,8 +1,8 @@
 {
   "name": "kibi_radar_vis",
-  "version": "5.0.1",
+  "version": "5.0.0",
   "kibana" : {
-    "version": "5.0.1"
+    "version": "5.0.0"
   },
   "authors": [
     "SIREn Solutions <info@siren.solutions>"
