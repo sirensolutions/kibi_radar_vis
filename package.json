@@ -20,9 +20,9 @@
     "build": "gulp build"
   },
   "devDependencies": {
+    "eslint-plugin-mocha": "1.0.0",
     "babel-eslint": "^4.1.6",
     "bluebird": "^3.0.6",
-    "bower": "^1.6.9",
     "eslint": "^1.10.3",
     "gulp": "3.9.1",
     "gulp-eslint": "^1.1.1",
