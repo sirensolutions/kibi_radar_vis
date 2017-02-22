@@ -19,7 +19,14 @@ The following table shows the compatibility between releases of Kibi/Kibana and 
 
 Kibi/Kibana|Radar Chart Plugin
 -----|-----
-4.6.4|master
+5.2.1|master
+5.2.0|branch-5.2.0
+5.1.2|branch-5.1.2
+5.1.1|branch-5.1.1
+5.0.2|branch-5.0.2
+5.0.1|branch-5.0.1
+5.0.0|branch-5.0.0
+4.6.4|branch-4.6.4
 4.6.3|4.5.3
 4.5.x|4.5.3
 4.4.x|4.4.2
@@ -29,6 +36,8 @@ Kibi/Kibana|Radar Chart Plugin
 
 ### Automatic
 
+For kibi/kibana 4.x
+
 ```sh
 $ # for kibi
 $ ./bin/kibi plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/4.5.3.zip
@@ -36,7 +45,18 @@ $ # for kibana
 $ ./bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/4.5.3.zip
 ```
 
+For kibi/kibana 5.x
+
+```sh
+$ # for kibi
+$ ./bin/kibi-plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/5.0.2.zip
+$ # for kibana
+$ ./bin/kibana-plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/5.0.2.zip
+```
+
 ### Manual
+
+For kibi/kibana 4.x
 
 ```sh
 $ git clone https://github.com/sirensolutions/kibi_radar_vis.git
@@ -46,13 +66,35 @@ $ npm run build
 $ cp -R build/kibi_radar_vis KIBANA_FOLDER_PATH/installedPlugins/
 ```
 
+For kibi/kibana 5.x
+
+```sh
+$ git clone https://github.com/sirensolutions/kibi_radar_vis.git
+$ cd kibi_radar_vis
+$ git checkout branch-5.x
+$ npm install
+$ npm run build
+$ cp -R build/kibi_radar_vis KIBANA_FOLDER_PATH/plugins/
+```
+
 ## Uninstall
+
+For kibi/kibana 4.x
 
 ```sh
 $ # for kibi
 $ bin/kibi plugin  --remove kibi_radar_vis
 $ # for kibana
 $ bin/kibana plugin  --remove kibi_radar_vis
+```
+
+For kibi/kibana 5.x
+
+```sh
+$ # for kibi
+$ bin/kibi-plugin  --remove kibi_radar_vis
+$ # for kibana
+$ bin/kibana-plugin  --remove kibi_radar_vis
 ```
 
 ## Development
