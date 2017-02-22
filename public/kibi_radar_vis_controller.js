@@ -451,9 +451,10 @@ define(function (require) {
           group.group = row[0];
           var axes = [];
           for (var i = 1; i < row.length; i++) {
-            var item = {};
-            item.axis = cols[i].aggConfig.params.field.displayName;
-            item.value = row[i];
+            var item = {
+              axis: cols[i].title,
+              value: row[i]
+            };
             axes.push(item);
           }
           group.axes = axes;
