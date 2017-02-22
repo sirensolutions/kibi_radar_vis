@@ -19,8 +19,14 @@ The following table shows the compatibility between releases of Kibi/Kibana and 
 
 Kibi/Kibana|Radar Chart Plugin
 -----|-----
-5.0.2|branch-5.x
-4.6.4|master
+5.2.1|master
+5.2.0|branch-5.2.0
+5.1.2|branch-5.1.2
+5.1.1|branch-5.1.1
+5.0.2|branch-5.0.2
+5.0.1|branch-5.0.1
+5.0.0|branch-5.0.0
+4.6.4|branch-4.6.4
 4.6.3|4.5.3
 4.5.x|4.5.3
 4.4.x|4.4.2
