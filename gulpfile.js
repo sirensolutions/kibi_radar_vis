@@ -6,8 +6,7 @@ var Rsync = require('rsync');
 var Promise = require('bluebird');
 var eslint = require('gulp-eslint');
 var rimraf = require('rimraf');
-var tar = require('gulp-tar');
-var gzip = require('gulp-gzip');
+var zip = require('gulp-zip');
 var fs = require('fs');
 var spawn = require('child_process').spawn;
 var minimist = require('minimist');
@@ -108,8 +107,7 @@ gulp.task('build', ['clean'], function (done) {
 
 gulp.task('package', ['build'], function (done) {
   return gulp.src(path.join(buildDir, '**', '*'))
-    .pipe(tar(packageName + '.tar'))
-    .pipe(gzip())
+    .pipe(zip(packageName + '.zip'))
     .pipe(gulp.dest(targetDir));
 });
 
