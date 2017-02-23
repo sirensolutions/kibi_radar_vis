@@ -39,13 +39,13 @@ $ # for kibana
 $ ./bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/4.5.3.zip
 ```
 
-For kibi/kibana 5.x
+For kibi/kibana 5.x.x (replace the 5.x.x with correct version number) 
 
 ```sh
 $ # for kibi
-$ ./bin/kibi-plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/5.0.2.zip
+$ ./bin/kibi-plugin install https://github.com/sirensolutions/kibi_radar_vis/releases/download/5.x.x/kibi_radar_vis-5.x.x.zip
 $ # for kibana
-$ ./bin/kibana-plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/5.0.2.zip
+$ ./bin/kibana-plugin install https://github.com/sirensolutions/kibi_radar_vis/releases/download/5.x.x/kibi_radar_vis-5.x.x.zip
 ```
 
 ### Manual
@@ -65,7 +65,7 @@ For kibi/kibana 5.x
 ```sh
 $ git clone https://github.com/sirensolutions/kibi_radar_vis.git
 $ cd kibi_radar_vis
-$ git checkout branch-5.x
+$ git checkout branch-5.x.x
 $ npm install
 $ npm run build
 $ cp -R build/kibi_radar_vis KIBANA_FOLDER_PATH/plugins/
@@ -86,9 +86,9 @@ For kibi/kibana 5.x
 
 ```sh
 $ # for kibi
-$ bin/kibi-plugin  --remove kibi_radar_vis
+$ bin/kibi-plugin remove kibi_radar_vis
 $ # for kibana
-$ bin/kibana-plugin  --remove kibi_radar_vis
+$ bin/kibana-plugin remove kibi_radar_vis
 ```
 
 ## Development
