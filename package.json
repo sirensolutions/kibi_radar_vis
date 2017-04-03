@@ -2,7 +2,7 @@
   "name": "kibi_radar_vis",
   "version": "5.2.2-SNAPSHOT",
   "kibana" : {
-    "version": "5.2.1"
+    "version": "5.2.2"
   },
   "authors": [
     "SIREn Solutions <info@siren.solutions>"
