@@ -1,6 +1,6 @@
 {
   "name": "kibi_radar_vis",
-  "version": "5.2.2-SNAPSHOT",
+  "version": "5.2.2",
   "kibana" : {
     "version": "5.2.2"
   },
