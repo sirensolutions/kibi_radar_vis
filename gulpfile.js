@@ -25,12 +25,12 @@ var include = [
 ];
 
 var knownOptions = {
-  string: 'kibanahome',
-  default: { kibanahome: 'kibana' }
+  string: 'kibanahomepath',
+  default: { kibanahomepath: 'kibana' }
 };
 var options = minimist(process.argv.slice(2), knownOptions);
 
-var kibanaPluginDir = path.resolve(__dirname, '../' + options.kibanahome + '/plugins/' + pkg.name);
+var kibanaPluginDir = path.resolve(__dirname, options.kibanahomepath + '/plugins/' + pkg.name);
 
 function syncPluginTo(dest, done) {
   mkdirp(dest, function (err) {
@@ -122,14 +122,14 @@ gulp.task('dev', ['sync'], function (done) {
 
 gulp.task('test', ['sync'], function(done) {
   spawn('grunt', ['test:browser', '--grep=Kibi Radar Chart'], {
-    cwd: '../' + options.kibanahome,
+    cwd: '../' + options.kibanahomepath,
     stdio: 'inherit'
   }).on('close', done);
 });
 
 gulp.task('coverage', ['sync'], function(done) {
   spawn('grunt', ['test:coverage', '--grep=Kibi Radar Chart'], {
-    cwd: '../' + options.kibanahome,
+    cwd: '../' + options.kibanahomepath,
     stdio: 'inherit'
   }).on('close', done);
 });
