@@ -9,6 +9,7 @@ define(function (require) {
   require('ui/registry/vis_types').register(RadarVisProvider);
 
   function RadarVisProvider(Private) {
+    const VisType = Private(require('ui/vis/vis_type'));
     const TemplateVisType = Private(require('ui/template_vis_type/template_vis_type'));
     const Schemas = Private(require('ui/vis/schemas'));
 
@@ -16,12 +17,13 @@ define(function (require) {
     // Vis object of this type.
     return new TemplateVisType({
       name: 'radar',
-      title: 'Radar chart',
+      title: 'Kibi Radar Chart',
       description: 'A radar chart is a graphical method of displaying multivariate data ' +
                    'in the form of a two-dimensional chart of three or more ' +
                    'quantitative variables represented on axes starting from the same point.' +
                    ' The relative position and angle of the axes is typically uninformative.',
       icon: 'fa-empire',
+      category: VisType.CATEGORY.KIBI,
       template: require('plugins/kibi_radar_vis/kibi_radar_vis.html'),
       params: {
         defaults: {
