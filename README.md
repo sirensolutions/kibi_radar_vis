@@ -76,7 +76,7 @@ $ cd kibi_radar_vis
 $ git checkout branch-5.x.x
 $ npm install
 $ npm run build
-$ cp -R build/kibi_radar_vis KIBANA_FOLDER_PATH/plugins/
+$ cp -R build/kibana/kibi_radar_vis KIBANA_FOLDER_PATH/plugins/
 ```
 
 ## Uninstall
