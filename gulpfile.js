@@ -26,7 +26,7 @@ var include = [
 
 var knownOptions = {
   string: 'kibanahomepath',
-  default: { kibanahomepath: 'kibana' }
+  default: { kibanahomepath: '../kibi-internal' }
 };
 var options = minimist(process.argv.slice(2), knownOptions);
 
@@ -122,14 +122,14 @@ gulp.task('dev', ['sync'], function (done) {
 
 gulp.task('test', ['sync'], function(done) {
   spawn('grunt', ['test:browser', '--grep=Kibi Radar Chart'], {
-    cwd: '../' + options.kibanahomepath,
+    cwd: options.kibanahomepath,
     stdio: 'inherit'
   }).on('close', done);
 });
 
 gulp.task('coverage', ['sync'], function(done) {
   spawn('grunt', ['test:coverage', '--grep=Kibi Radar Chart'], {
-    cwd: '../' + options.kibanahomepath,
+    cwd: options.kibanahomepath,
     stdio: 'inherit'
   }).on('close', done);
 });
