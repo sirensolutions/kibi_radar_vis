@@ -254,7 +254,7 @@ publishing {
     zipDist(MavenPublication) {
       artifact(new File("${projectDir}/target/gulp", "${packageJson.name}.zip"))
       groupId project.group
-      artifactId "kibi_radar_vis"
+      artifactId "kibi-radar-vis"
       version packageJson.version
     }
   }
