@@ -73,14 +73,14 @@ module.controller('KbnRadarVisController', function ($scope, $element, $rootScop
     config.maxValue = Math.max(config.maxValue, d3.max(data, function (d) {
       return d3.max(d.axes, function (o) { return o.value; });
     }));
-    config.levelScale = $scope.vis.params.radar.addLevelScale;
-    config.labelScale = $scope.vis.params.radar.addLabelScale;
-    config.levels = $scope.vis.params.radar.addLevelNumber;
+    config.levelScale = $scope.vis.params.config.addLevelScale;
+    config.labelScale = $scope.vis.params.config.addLabelScale;
+    config.levels = $scope.vis.params.config.addLevelNumber;
     config.w *= config.levelScale;
     config.h *= config.levelScale;
     config.paddingX = config.w * config.levelScale;
     config.paddingY = config.h * config.levelScale;
-    config.facet = $scope.vis.params.radar.isFacet;
+    config.facet = $scope.vis.params.config.isFacet;
 
     // if facet required:
     if (config.facet) {
@@ -390,13 +390,13 @@ module.controller('KbnRadarVisController', function ($scope, $element, $rootScop
   const _buildVis = function (data) {
     _buildVisComponents();
     _buildCoordinates(data);
-    const showLevels = $scope.vis.params.radar.addLevel;
-    const showLevelsLabels = $scope.vis.params.radar.addLevelLabel;
-    const showAxes = $scope.vis.params.radar.addAxe;
-    const showAxesLabels = $scope.vis.params.radar.addAxeLabel;
-    const showLegend = $scope.vis.params.radar.showLegend;
-    const showVertices = $scope.vis.params.radar.addVertice;
-    const showPolygons = $scope.vis.params.radar.addPolygon;
+    const showLevels = $scope.vis.params.config.addLevel;
+    const showLevelsLabels = $scope.vis.params.config.addLevelLabel;
+    const showAxes = $scope.vis.params.config.addAxe;
+    const showAxesLabels = $scope.vis.params.config.addAxeLabel;
+    const showLegend = $scope.vis.params.config.addLegend;
+    const showVertices = $scope.vis.params.config.addVertice;
+    const showPolygons = $scope.vis.params.config.addPolygon;
 
     if (showLevels) _buildLevels();
     if (showLevelsLabels) _buildLevelsLabels();

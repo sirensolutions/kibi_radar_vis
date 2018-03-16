@@ -25,16 +25,12 @@ function RadarVisProvider(Private) {
                  'quantitative variables represented on axes starting from the same point.' +
                  ' The relative position and angle of the axes is typically uninformative.',
     icon: 'fa-empire',
-    category: CATEGORY.KIBI,
+    category: CATEGORY.SIREN,
     template,
     visConfig: {
       defaults: {
-        radar: {
-          fontSize: 60,
-          shareYAxis: true,
-          addTooltip: true,
-          showLegend: true,
-          isDonut: false,
+        config: {
+          addLegend: true,
           isFacet: false,
           addLevel: true,
           addAxe: true,
