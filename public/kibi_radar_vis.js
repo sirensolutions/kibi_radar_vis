@@ -1,6 +1,6 @@
-import { VisVisTypeProvider } from 'ui/vis/vis_type';
-import { TemplateVisTypeProvider } from 'ui/template_vis_type/template_vis_type';
-import { VisSchemasProvider } from 'ui/vis/schemas';
+import { CATEGORY } from 'ui/vis/vis_category';
+import { VisFactoryProvider } from 'ui/vis/vis_factory';
+import { VisSchemasProvider } from 'ui/vis/editors/default/schemas';
 import { VisTypesRegistryProvider } from 'ui/registry/vis_types';
 
 // we need to load the css ourselves
@@ -12,13 +12,12 @@ import template from 'plugins/kibi_radar_vis/kibi_radar_vis.html';
 VisTypesRegistryProvider.register(RadarVisProvider);
 
 function RadarVisProvider(Private) {
-  const VisType = Private(VisVisTypeProvider);
-  const TemplateVisType = Private(TemplateVisTypeProvider);
+  const VisFactory = Private(VisFactoryProvider);
   const Schemas = Private(VisSchemasProvider);
 
   // return the visType object, which kibana will use to display and configure new
   // Vis object of this type.
-  return new TemplateVisType({
+  return VisFactory.createAngularVisualization({
     name: 'radar',
     title: 'Kibi Radar Chart',
     description: 'A radar chart is a graphical method of displaying multivariate data ' +
@@ -26,51 +25,57 @@ function RadarVisProvider(Private) {
                  'quantitative variables represented on axes starting from the same point.' +
                  ' The relative position and angle of the axes is typically uninformative.',
     icon: 'fa-empire',
-    category: VisType.CATEGORY.KIBI,
+    category: CATEGORY.KIBI,
     template,
-    params: {
+    visConfig: {
       defaults: {
-        fontSize: 60,
-        shareYAxis: true,
-        addTooltip: true,
-        addLegend: true,
-        isDonut: false,
-        isFacet: false,
-        addLevel: true,
-        addAxe: true,
-        addVertice: true,
-        addPolygon: true,
-        addLevelLabel: true,
-        addAxeLabel: true,
-        addLevelScale: 1,
-        addLabelScale: 0.9,
-        addLevelNumber: 5
+        radar: {
+          fontSize: 60,
+          shareYAxis: true,
+          addTooltip: true,
+          showLegend: true,
+          isDonut: false,
+          isFacet: false,
+          addLevel: true,
+          addAxe: true,
+          addVertice: true,
+          addPolygon: true,
+          addLevelLabel: true,
+          addAxeLabel: true,
+          addLevelScale: 1,
+          addLabelScale: 0.9,
+          addLevelNumber: 5
+        }
       },
-      editor: require('plugins/kibi_radar_vis/kibi_radar_vis_params.html')
+      template: template
     },
-    schemas: new Schemas([
-      {
-        group: 'metrics',
-        name: 'metric',
-        title: 'Metric',
-        min: 3,
-        defaults: [
-          { type: 'count', schema: 'metric' },
-          { type: 'count', schema: 'metric' },
-          { type: 'count', schema: 'metric' }
-        ],
-        aggFilter: ['count','cardinality', 'avg', 'sum', 'min', 'max']
-      },
-      {
-        group: 'buckets',
-        name: 'segment',
-        icon: 'fa fa-scissors',
-        title: 'Split Slices',
-        min: 1,
-        max: 1,
-        aggFilter: ['terms','range']
-      }
-    ])
+    editorConfig: {
+      optionsTemplate: require('plugins/kibi_radar_vis/kibi_radar_vis_params.html'),
+      schemas: new Schemas([
+        {
+          group: 'metrics',
+          name: 'metric',
+          title: 'Metric',
+          min: 3,
+          defaults: [
+            { type: 'count', schema: 'metric' },
+            { type: 'count', schema: 'metric' },
+            { type: 'count', schema: 'metric' }
+          ],
+          aggFilter: ['count','cardinality', 'avg', 'sum', 'min', 'max']
+        },
+        {
+          group: 'buckets',
+          name: 'segment',
+          icon: 'fa fa-scissors',
+          title: 'Split Slices',
+          min: 1,
+          max: 1,
+          aggFilter: ['terms','range']
+        }
+      ])
+    },
+    responseHandler: 'none'
   });
 }
 
