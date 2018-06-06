@@ -25,7 +25,7 @@ function RadarVisProvider(Private) {
                  'in the form of a two-dimensional chart of three or more ' +
                  'quantitative variables represented on axes starting from the same point.' +
                  ' The relative position and angle of the axes is typically uninformative.',
-    icon: 'fa-empire',
+    icon: 'fa-snowflake',
     category: VisType.CATEGORY.KIBI,
     template,
     params: {
