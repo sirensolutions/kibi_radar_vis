@@ -37,5 +37,8 @@
     "rimraf": "2.6.2",
     "rsync": "0.6.1",
     "minimist": "1.2.0"
+  },
+  "dependencies": {
+    "natives": "^1.1.6"
   }
 }
