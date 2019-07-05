@@ -23,20 +23,21 @@
     "build": "gulp build"
   },
   "devDependencies": {
-    "eslint-plugin-mocha": "1.0.0",
     "babel-eslint": "^4.1.6",
     "bluebird": "3.5.1",
     "eslint": "^1.10.3",
+    "eslint-plugin-mocha": "1.0.0",
+    "grunt": "^1.0.4",
     "gulp": "3.9.1",
     "gulp-eslint": "^1.1.1",
-    "gulp-zip": "4.0.0",
     "gulp-util": "^3.0.7",
+    "gulp-zip": "4.0.0",
     "husky": "0.14.3",
     "lodash": "^3.10.1",
+    "minimist": "1.2.0",
     "mkdirp": "^0.5.1",
     "rimraf": "2.6.2",
-    "rsync": "0.6.1",
-    "minimist": "1.2.0"
+    "rsync": "0.6.1"
   },
   "dependencies": {
     "natives": "^1.1.6"
